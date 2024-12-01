@@ -4,7 +4,8 @@
   "description": "I am trying... let's see where I end up",
   "main": "Day01.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
