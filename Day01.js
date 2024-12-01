@@ -13,6 +13,13 @@ const parseData = (input) => {
   return { list1, list2 };
 };
 
+const orderLists = (lists) => {
+  const list1 = lists.list1.sort((a, b) => a - b);
+  const list2 = lists.list2.sort((a, b) => a - b);
+
+  return { list1, list2 };
+};
+
 // Main function to be executed when running with 'node Day01.js'
 const main = () => {
   const inputData = `3   4\n4   3\n2   5\n1   3\n3   9\n3   3`;
@@ -20,6 +27,11 @@ const main = () => {
   const result = parseData(inputData);
   console.log("List 1:", result.list1);
   console.log("List 2:", result.list2);
+
+  const resultOrdered = orderLists(result);
+  console.log("Ordered List 1:", resultOrdered.list1);
+  console.log("Ordered List 2:", resultOrdered.list2);
+
 };
 
 // Execute main function
@@ -27,4 +39,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { parseData };
+module.exports = { parseData, orderLists, diffLists };
