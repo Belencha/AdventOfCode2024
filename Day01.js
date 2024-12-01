@@ -4,7 +4,6 @@ const parseData = (input) => {
   const list2 = [];
 
   const lines = input.split("\n");
-  console.log({ lines });
   lines.map((line) => {
     const [itemA, itemB] = line.replace(/\s+/g, " ").trim().split(" ");
     list1.push(Number(itemA));
