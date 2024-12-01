@@ -1,4 +1,4 @@
-const { parseData } = require("./Day01");
+const { parseData, orderLists, diffLists } = require("./Day01");
 
 describe("Day 1 algorithm", () => {
   it("should store the input data lists into two different arrays", () => {
@@ -16,5 +16,14 @@ describe("Day 1 algorithm", () => {
 
     expect(orderedResult.list1).toEqual([1, 2, 3, 3, 3, 4]);
     expect(orderedResult.list2).toEqual([3, 3, 3, 4, 5, 9]);
+  });
+
+  it("should gather a list with the diff among lists, item by item", () => {
+    const input = `3   4\n4   3\n2   5\n1   3\n3   9\n3   3`;
+    const result = parseData(input);
+    const orderedResult = orderLists(result);
+    const diffList = diffLists(orderedResult);
+
+    expect(diffList).toEqual([2, 1, 0, 1, 2, 5]);
   });
 });

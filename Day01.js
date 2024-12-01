@@ -20,6 +20,12 @@ const orderLists = (lists) => {
   return { list1, list2 };
 };
 
+const diffLists = (orderedLists) => {
+  return orderedLists.list1.map(
+    (item1, index) => orderedLists.list2[index] - item1
+  );
+};
+
 // Main function to be executed when running with 'node Day01.js'
 const main = () => {
   const inputData = `3   4\n4   3\n2   5\n1   3\n3   9\n3   3`;
@@ -32,6 +38,8 @@ const main = () => {
   console.log("Ordered List 1:", resultOrdered.list1);
   console.log("Ordered List 2:", resultOrdered.list2);
 
+  const diffList = diffLists(lists);
+  console.log("Diff list:", diffList);
 };
 
 // Execute main function
