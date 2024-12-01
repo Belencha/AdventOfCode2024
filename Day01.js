@@ -26,6 +26,10 @@ const diffLists = (orderedLists) => {
   );
 };
 
+const calculateDistance = (diffList) => {
+  return diffList.reduce((item, acc) => item + acc, 0);
+};
+
 // Main function to be executed when running with 'node Day01.js'
 const main = () => {
   const inputData = `3   4\n4   3\n2   5\n1   3\n3   9\n3   3`;
@@ -38,8 +42,11 @@ const main = () => {
   console.log("Ordered List 1:", resultOrdered.list1);
   console.log("Ordered List 2:", resultOrdered.list2);
 
-  const diffList = diffLists(lists);
+  const diffList = diffLists(resultOrdered);
   console.log("Diff list:", diffList);
+
+  const totalDistance = calculateDistance(diffList);
+  console.log("Total distance:", totalDistance);
 };
 
 // Execute main function
@@ -47,4 +54,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { parseData, orderLists, diffLists };
+module.exports = { parseData, orderLists, diffLists, calculateDistance };
