@@ -1,4 +1,4 @@
-const { parseData } = require("./Day02");
+const { parseData, validateReport } = require("./Day02");
 
 const hardCodedMatrix = [
   [7, 6, 4, 2, 1],
@@ -8,6 +8,13 @@ const hardCodedMatrix = [
   [8, 6, 4, 4, 1],
   [1, 3, 6, 7, 9],
 ];
+
+const validationMatrix = [true, false, false, false, false, true];
+
+const matrixData = hardCodedMatrix.map((item, index) => [
+  item,
+  validationMatrix[index],
+]);
 
 describe("Day 2 algorithm", () => {
   it("should read the data and store it in a dynamic matrix", () => {
@@ -23,3 +30,13 @@ describe("Day 2 algorithm", () => {
     expect(matrix).toEqual(hardCodedMatrix);
   });
 
+  describe("Reports tests", () => {
+    it.each(matrixData)(
+      "should check if the report %j is valid %s",
+      (report, expectedValidity) => {
+        const isReportValid = validateReport(report);
+        expect(isReportValid).toBe(expectedValidity);
+      }
+    );
+  });
+});
