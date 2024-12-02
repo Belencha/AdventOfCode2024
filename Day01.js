@@ -56,6 +56,17 @@ const calculateDistance = (diffList) => {
   return diffList.reduce((item, acc) => item + acc, 0);
 };
 
+/* Part Two */
+
+const calculateSimilarityList = (lists) => {
+  return lists.list1.map((item1) => {
+    const count = lists.list2.reduce((acc, current) => {
+      return current === item1 ? acc + 1 : acc;
+    }, 0);
+    return count * item1;
+  });
+};
+
 // Main function to be executed when running with 'node Day01.js'
 const main = async () => {
   const inputData = `3   4\n4   3\n2   5\n1   3\n3   9\n3   3`;
@@ -82,4 +93,10 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { parseData, orderLists, diffLists, calculateDistance };
+module.exports = {
+  parseData,
+  orderLists,
+  diffLists,
+  calculateDistance,
+  calculateSimilarityList,
+};

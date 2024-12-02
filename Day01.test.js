@@ -3,6 +3,7 @@ const {
   orderLists,
   diffLists,
   calculateDistance,
+  calculateSimilarityList,
 } = require("./Day01");
 
 describe("Day 1 algorithm", () => {
@@ -40,5 +41,15 @@ describe("Day 1 algorithm", () => {
     const distance = calculateDistance(diffList);
 
     expect(distance).toEqual(11);
+  });
+});
+
+describe("Day 1 - part 2 - algorithm", () => {
+  it("should get a new list with the similarity score by each item", () => {
+    const input = `3   4\n4   3\n2   5\n1   3\n3   9\n3   3`;
+    const result = parseData(input);
+
+    const similarityList = calculateSimilarityList(result);
+    expect(similarityList).toEqual([9, 4, 0, 0, 9, 9]);
   });
 });
