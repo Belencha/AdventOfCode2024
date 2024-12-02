@@ -47,8 +47,8 @@ const orderLists = (lists) => {
 };
 
 const diffLists = (orderedLists) => {
-  return orderedLists.list1.map(
-    (item1, index) => orderedLists.list2[index] - item1
+  return orderedLists.list1.map((item1, index) =>
+    Math.abs(orderedLists.list2[index] - item1)
   );
 };
 
