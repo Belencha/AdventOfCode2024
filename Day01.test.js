@@ -2,7 +2,7 @@ const {
   parseData,
   orderLists,
   diffLists,
-  calculateDistance,
+  sumUpList,
   calculateSimilarityList,
 } = require("./Day01");
 
@@ -38,7 +38,7 @@ describe("Day 1 algorithm", () => {
     const result = parseData(input);
     const orderedResult = orderLists(result);
     const diffList = diffLists(orderedResult);
-    const distance = calculateDistance(diffList);
+    const distance = sumUpList(diffList);
 
     expect(distance).toEqual(11);
   });
@@ -51,5 +51,14 @@ describe("Day 1 - part 2 - algorithm", () => {
 
     const similarityList = calculateSimilarityList(result);
     expect(similarityList).toEqual([9, 4, 0, 0, 9, 9]);
+  });
+
+  it("should sum up all the similarities and get the total number", () => {
+    const input = `3   4\n4   3\n2   5\n1   3\n3   9\n3   3`;
+    const result = parseData(input);
+    const similarityList = calculateSimilarityList(result);
+    const similarity = sumUpList(similarityList);
+
+    expect(similarity).toEqual(31);
   });
 });

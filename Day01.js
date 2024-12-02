@@ -52,7 +52,7 @@ const diffLists = (orderedLists) => {
   );
 };
 
-const calculateDistance = (diffList) => {
+const sumUpList = (diffList) => {
   return diffList.reduce((item, acc) => item + acc, 0);
 };
 
@@ -84,7 +84,7 @@ const main = async () => {
   const diffList = diffLists(resultOrdered);
   console.log("Diff list:", diffList);
 
-  const totalDistance = calculateDistance(diffList);
+  const totalDistance = sumUpList(diffList);
   console.log("Total distance:", totalDistance);
 };
 
@@ -97,6 +97,6 @@ module.exports = {
   parseData,
   orderLists,
   diffLists,
-  calculateDistance,
+  sumUpList,
   calculateSimilarityList,
 };
