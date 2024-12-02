@@ -74,12 +74,7 @@ const main = async () => {
   //const result = parseData(inputData);
   const result = await readInputDataFile();
 
-  console.log("List 1:", result.list1);
-  console.log("List 2:", result.list2);
-
   const resultOrdered = orderLists(result);
-  console.log("Ordered List 1:", resultOrdered.list1);
-  console.log("Ordered List 2:", resultOrdered.list2);
 
   const diffList = diffLists(resultOrdered);
   console.log("Diff list:", diffList);
