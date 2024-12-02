@@ -86,6 +86,10 @@ const main = async () => {
 
   const totalDistance = sumUpList(diffList);
   console.log("Total distance:", totalDistance);
+
+  const similarityList = calculateSimilarityList(result);
+  const totalSimilarity = sumUpList(similarityList);
+  console.log("Total similarity:", totalSimilarity);
 };
 
 // Execute main function
