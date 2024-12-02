@@ -30,12 +30,18 @@ const validateReport = (report) => {
     }
   }
 
-  console.log({ report, strictIncreasing, strictDecreasing });
-
   return strictIncreasing || strictDecreasing;
+};
+
+const countSafeReports = (matrix) => {
+  return matrix.reduce(
+    (acc, current) => (validateReport(current) ? acc + 1 : acc + 0),
+    0
+  );
 };
 
 module.exports = {
   parseData,
   validateReport,
+  countSafeReports,
 };

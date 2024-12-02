@@ -1,4 +1,4 @@
-const { parseData, validateReport } = require("./Day02");
+const { parseData, validateReport, countSafeReports } = require("./Day02");
 
 const hardCodedMatrix = [
   [7, 6, 4, 2, 1],
@@ -38,5 +38,19 @@ describe("Day 2 algorithm", () => {
         expect(isReportValid).toBe(expectedValidity);
       }
     );
+  });
+
+  it("should calculate how many reports are valid/safe", () => {
+    const input = `7 6 4 2 1
+1 2 7 8 9
+9 7 6 2 1
+1 3 2 4 5
+8 6 4 4 1
+1 3 6 7 9`;
+
+    const matrix = parseData(input);
+    const totalSafeReports = countSafeReports(matrix);
+
+    expect(totalSafeReports).toEqual(2);
   });
 });
