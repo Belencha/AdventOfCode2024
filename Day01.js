@@ -1,3 +1,29 @@
+const fs = require("fs").promises;
+
+const readInputDataFile = async () => {
+  const list1 = [];
+  const list2 = [];
+
+  try {
+    const data = await fs.readFile("Day01.input.txt", "utf8");
+
+    // Split the content by lines
+    const lines = data.trim().split("\n");
+
+    // Loop through each line and split by space to get the values
+    lines.forEach((line) => {
+      const [first, second] = line.trim().split(/\s+/).map(Number);
+      list1.push(first);
+      list2.push(second);
+    });
+
+    return { list1, list2 };
+  } catch (err) {
+    console.error("Error reading file:", err);
+    return { list1, list2 }; // return empty lists in case of an error
+  }
+};
+
 const parseData = (input) => {
   // leer input hasta \n y de ahí, push a un array y push a otro separados por un espacio
   const list1 = [];
@@ -31,10 +57,12 @@ const calculateDistance = (diffList) => {
 };
 
 // Main function to be executed when running with 'node Day01.js'
-const main = () => {
+const main = async () => {
   const inputData = `3   4\n4   3\n2   5\n1   3\n3   9\n3   3`;
 
-  const result = parseData(inputData);
+  //const result = parseData(inputData);
+  const result = await readInputDataFile();
+
   console.log("List 1:", result.list1);
   console.log("List 2:", result.list2);
 
