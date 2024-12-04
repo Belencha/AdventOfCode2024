@@ -6,8 +6,6 @@ const parseData = (input) => {
 
   const mulItems = input.match(mulRegex);
 
-  console.log({ mulItems });
-
   mulItems.map((mul) => {
     const multiplierA = mul.match(/mul\((\d+),\d+\)/)[1];
     const multiplierB = mul.match(/mul\(\d+,(\d+)\)/)[1];
@@ -17,6 +15,12 @@ const parseData = (input) => {
   return multipliersArray;
 };
 
+const calculateTotal = (multipliersArray) => {
+  const multipliedValues = multipliersArray.map((pair) => pair[0] * pair[1]);
+  return multipliedValues.reduce((acc, current) => acc + current, 0);
+};
+
 module.exports = {
   parseData,
+  calculateTotal,
 };
