@@ -96,6 +96,10 @@ const main = async () => {
   const numberOfSafeReports = countSafeReports(result);
 
   console.log({ numberOfSafeReports });
+
+  const numberOfStillSafeReports = countStillSafeReports(result);
+
+  console.log({ numberOfStillSafeReports });
 };
 
 // Execute main function
