@@ -1,3 +1,5 @@
+const fs = require("fs").promises;
+
 const parseData = (input) => {
   // extraer mult(1-3 digit, 1-3 digit) from the string provided
   const multipliersArray = [];
@@ -20,11 +22,34 @@ const calculateTotal = (multipliersArray) => {
   return multipliedValues.reduce((acc, current) => acc + current, 0);
 };
 
+const readInputDataFile = async () => {
+  const multipliersArray = [];
+
+  try {
+    const data = await fs.readFile("Day03.input.txt", "utf8");
+
+    const mulRegex = /mul\((\d{1,3}),(\d{1,3})\)/g;
+
+    const mulItems = data.match(mulRegex);
+
+    mulItems.map((mul) => {
+      const multiplierA = mul.match(/mul\((\d+),\d+\)/)[1];
+      const multiplierB = mul.match(/mul\(\d+,(\d+)\)/)[1];
+      multipliersArray.push([Number(multiplierA), Number(multiplierB)]);
+    });
+
+    return multipliersArray;
+  } catch (err) {
+    console.error("Error reading file:", err);
+    return multipliersArray; // return empty lists in case of an error
+  }
+};
+
 const main = async () => {
   const inputData = `xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))`;
 
-  const result = parseData(inputData);
-  //const result = await readInputDataFile();
+  //const result = parseData(inputData);
+  const result = await readInputDataFile();
 
   const totalMulCalculation = calculateTotal(result);
 
