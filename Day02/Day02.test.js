@@ -1,4 +1,9 @@
-const { parseData, validateReport, countSafeReports } = require("./Day02");
+const {
+  parseData,
+  validateReport,
+  countSafeReports,
+  validateReportRemovingOneItemIfNeeded,
+} = require("./Day02");
 
 const hardCodedMatrix = [
   [7, 6, 4, 2, 1],
@@ -52,5 +57,26 @@ describe("Day 2 algorithm", () => {
     const totalSafeReports = countSafeReports(matrix);
 
     expect(totalSafeReports).toEqual(2);
+  });
+});
+
+const stillValidationMatrix = [true, false, false, true, true, true];
+
+const secondMatrixData = hardCodedMatrix.map((item, index) => [
+  item,
+  stillValidationMatrix[index],
+]);
+
+describe("Day 2 - Part Two - algorithm", () => {
+  describe("Reports tests removing one element if needed", () => {
+    it.each(secondMatrixData)(
+      "should check if the report %j is still valid %s",
+      (report, expectedValidity) => {
+        const isReportStillValid =
+          validateReportRemovingOneItemIfNeeded(report);
+
+        expect(isReportStillValid).toBe(expectedValidity);
+      }
+    );
   });
 });

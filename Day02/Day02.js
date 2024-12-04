@@ -42,6 +42,19 @@ const countSafeReports = (matrix) => {
   );
 };
 
+const validateReportRemovingOneItemIfNeeded = (report) => {
+  let isValid = validateReport(report);
+
+  if (!isValid) {
+    for (let i = 0; i < report.length && !isValid; i++) {
+      const testReport = report.filter((_, index) => index !== i);
+      isValid = validateReport(testReport);
+    }
+  }
+
+  return isValid;
+};
+
 const readInputDataFile = async () => {
   const matrix = [];
 
@@ -86,4 +99,5 @@ module.exports = {
   parseData,
   validateReport,
   countSafeReports,
+  validateReportRemovingOneItemIfNeeded,
 };
