@@ -3,6 +3,7 @@ const {
   validateReport,
   countSafeReports,
   validateReportRemovingOneItemIfNeeded,
+  countStillSafeReports,
 } = require("./Day02");
 
 const hardCodedMatrix = [
@@ -78,5 +79,19 @@ describe("Day 2 - Part Two - algorithm", () => {
         expect(isReportStillValid).toBe(expectedValidity);
       }
     );
+  });
+
+  it("should calculate how many reports are still valid/safe", () => {
+    const input = `7 6 4 2 1
+1 2 7 8 9
+9 7 6 2 1
+1 3 2 4 5
+8 6 4 4 1
+1 3 6 7 9`;
+
+    const matrix = parseData(input);
+    const totalSafeReports = countStillSafeReports(matrix);
+
+    expect(totalSafeReports).toEqual(4);
   });
 });

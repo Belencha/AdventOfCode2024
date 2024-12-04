@@ -55,6 +55,14 @@ const validateReportRemovingOneItemIfNeeded = (report) => {
   return isValid;
 };
 
+const countStillSafeReports = (matrix) => {
+  return matrix.reduce(
+    (acc, current) =>
+      validateReportRemovingOneItemIfNeeded(current) ? acc + 1 : acc + 0,
+    0
+  );
+};
+
 const readInputDataFile = async () => {
   const matrix = [];
 
@@ -100,4 +108,5 @@ module.exports = {
   validateReport,
   countSafeReports,
   validateReportRemovingOneItemIfNeeded,
+  countStillSafeReports,
 };
